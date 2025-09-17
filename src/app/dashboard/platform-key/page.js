@@ -23,36 +23,6 @@ export default function PlatformKey() {
 
   return (
     <div className="space-y-6">
-      {/* Breadcrumbs */}
-      <nav className="flex" aria-label="Breadcrumb">
-        <ol className="flex items-center space-x-2">
-          <li>
-            <Link
-              href="/dashboard"
-              className="text-blue-600 hover:text-blue-800"
-            >
-              Dashboard
-            </Link>
-          </li>
-          <li>
-            <svg
-              className="w-4 h-4 text-gray-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </li>
-          <li>
-            <span className="text-gray-500">Platform Key</span>
-          </li>
-        </ol>
-      </nav>
-
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Platform Key</h1>
@@ -62,73 +32,74 @@ export default function PlatformKey() {
       </div>
 
       {/* Your Platform Key Card */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">
-          Your Platform Key
-        </h2>
-
-        <div className="bg-blue-900 rounded-lg p-4 mb-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <button
-                onClick={() => setIsKeyVisible(!isKeyVisible)}
-                className="text-gray-300 hover:text-white transition-colors"
+      <div className="bg-blue-900 rounded-lg p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-semibold text-white">
+            Your Platform Key
+          </h2>
+          <button
+            onClick={() => setIsKeyVisible(!isKeyVisible)}
+            className="text-gray-300 hover:text-white transition-colors"
+          >
+            {isKeyVisible ? (
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                {isKeyVisible ? (
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"
-                    />
-                  </svg>
-                )}
-              </button>
-              <span className="text-white font-mono text-lg">
-                {isKeyVisible ? platformKey : "••••••••••••••••••••••••"}
-              </span>
-            </div>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
+
+        {/* Key Input Field - Separate darker blue rectangle */}
+        <div className="bg-blue-800 rounded-lg p-4 mb-4">
+          <div className="flex items-center justify-between">
+            <span className="text-white font-mono text-lg">
+              {isKeyVisible ? platformKey : "••••••••••••••••••••••••"}
+            </span>
             <button
               onClick={handleCopyKey}
-              className="px-4 py-2 bg-white bg-opacity-20 text-white text-sm font-medium rounded-lg hover:bg-opacity-30 transition-colors"
+              className="px-4 py-2 bg-white text-blue-900 text-sm font-medium rounded-lg hover:bg-gray-100 transition-colors"
             >
               Copy
             </button>
           </div>
         </div>
 
-        <div className="text-sm text-gray-600">
+        <div className="text-sm text-white">
           <p>
             You're key is already connected to{" "}
             <Link
               href={`https://${connectedSite}`}
-              className="text-blue-600 hover:text-blue-800"
+              className="text-blue-300 hover:text-blue-200 underline"
             >
               {connectedSite}
             </Link>
@@ -137,7 +108,7 @@ export default function PlatformKey() {
       </div>
 
       {/* Regenerate Key Section */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div className="bg-white rounded-lg border border-gray-100 p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">
           Regenerate Key?
         </h2>

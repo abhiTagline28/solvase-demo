@@ -75,36 +75,6 @@ export default function PlanBilling() {
 
   return (
     <div className="space-y-6">
-      {/* Breadcrumbs */}
-      <nav className="flex" aria-label="Breadcrumb">
-        <ol className="flex items-center space-x-2">
-          <li>
-            <Link
-              href="/dashboard"
-              className="text-blue-600 hover:text-blue-800"
-            >
-              Dashboard
-            </Link>
-          </li>
-          <li>
-            <svg
-              className="w-4 h-4 text-gray-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </li>
-          <li>
-            <span className="text-gray-500">Plan & Billing</span>
-          </li>
-        </ol>
-      </nav>
-
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -115,82 +85,92 @@ export default function PlanBilling() {
         </p>
       </div>
 
-      {/* Subscription Details Card */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <h2 className="text-xl font-semibold text-gray-900">
-              Solvase AI Starter
-            </h2>
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-              Annually
-            </span>
-          </div>
-          <div className="text-right">
-            <p className="text-3xl font-bold text-gray-900">€3,620</p>
-            <p className="text-sm text-gray-500">per year</p>
-          </div>
-        </div>
-
-        <p className="text-gray-600 mb-4">Our basic plan for small websites.</p>
-
-        <div className="mb-4">
-          <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
-            <span>SEO pages used</span>
-            <span>8 of 10</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div
-              className="bg-blue-600 h-2 rounded-full"
-              style={{ width: "80%" }}
-            ></div>
-          </div>
-        </div>
-
-        <button className="flex items-center text-blue-600 hover:text-blue-800 font-medium">
-          Upgrade plan
-          <svg
-            className="w-4 h-4 ml-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
-      </div>
-
-      {/* Payment Method Card */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-2">
-          Payment method
-        </h2>
-        <p className="text-gray-600 mb-4">Change how you pay for your plan.</p>
-
-        <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
-              <span className="text-white font-bold text-sm">V</span>
-            </div>
+      {/* Top Cards Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Subscription Details Card */}
+        <div className="bg-white rounded-lg border border-gray-100 p-6">
+          <div className="flex items-start justify-between mb-4">
             <div>
-              <p className="font-medium text-gray-900">Visa ending in 1234</p>
-              <p className="text-sm text-gray-500">Expiry 06/2025</p>
-              <p className="text-sm text-gray-500">billing@solvase.com</p>
+              <div className="flex items-center space-x-3 mb-2">
+                <h2 className="text-xl font-semibold text-gray-900">
+                  Solvase AI Starter
+                </h2>
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                  Annually
+                </span>
+              </div>
+              <p className="text-gray-600 mb-4">
+                Our basic plan for small websites.
+              </p>
+            </div>
+            <div className="text-right">
+              <p className="text-3xl font-bold text-gray-900">€3,620</p>
+              <p className="text-sm text-gray-500">per year</p>
             </div>
           </div>
-          <button className="px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors">
-            Edit
-          </button>
+
+          <div className="mb-4">
+            <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
+              <span>SEO pages used</span>
+              <span>8 of 10</span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div
+                className="bg-blue-600 h-2 rounded-full"
+                style={{ width: "80%" }}
+              ></div>
+            </div>
+          </div>
+
+          <div className="flex justify-end">
+            <button className="flex items-center text-blue-600 hover:text-blue-800 font-medium">
+              Upgrade plan
+              <svg
+                className="w-4 h-4 ml-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Payment Method Card */}
+        <div className="bg-white rounded-lg border border-gray-100 p-6">
+          <h2 className="text-lg font-semibold text-gray-900 mb-2">
+            Payment method
+          </h2>
+          <p className="text-gray-600 mb-4">
+            Change how you pay for your plan.
+          </p>
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                <span className="text-white font-bold text-sm">V</span>
+              </div>
+              <div>
+                <p className="font-medium text-gray-900">Visa ending in 1234</p>
+                <p className="text-sm text-gray-500">Expiry 06/2025</p>
+                <p className="text-sm text-gray-500">billing@solvase.com</p>
+              </div>
+            </div>
+            <button className="px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors">
+              Edit
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Billing and Invoicing Section */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div className="bg-white rounded-lg border border-gray-100 p-6">
         <div className="flex items-center justify-between mb-4">
           <div>
             <h2 className="text-lg font-semibold text-gray-900">
