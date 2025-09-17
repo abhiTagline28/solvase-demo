@@ -51,6 +51,12 @@ export default function Home() {
           >
             Sign In
           </Link>
+          <Link
+            href="/dashboard"
+            className="w-full flex justify-center py-3 px-4 border border-green-300 rounded-md shadow-sm text-sm font-medium text-green-700 bg-green-50 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors"
+          >
+            View Dashboard (Demo)
+          </Link>
         </div>
 
         {/* Footer */}
