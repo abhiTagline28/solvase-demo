@@ -18,13 +18,7 @@ const navigation = [
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"
-        />
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M8 5a2 2 0 012-2h4a2 2 0 012 2v6H8V5z"
+          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
         />
       </svg>
     ),
@@ -109,7 +103,7 @@ const bottomNavigation = [
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+          d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 100 19.5 9.75 9.75 0 000-19.5z"
         />
       </svg>
     ),
@@ -120,42 +114,60 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col w-64 bg-gray-50 h-full">
+    <div className="flex flex-col w-64 bg-white h-full border-r border-gray-200">
       {/* Logo */}
-      <div className="flex items-center px-6 py-6">
+      <div className="flex items-center px-6 py-8">
         <div className="flex items-center">
-          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-teal-500 rounded-lg flex items-center justify-center mr-3">
-            <svg
-              className="w-5 h-5 text-white"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
+          {/* Geometric crystal/star logo */}
+          <div className="w-10 h-10 mr-3">
+            <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
+              <defs>
+                <linearGradient
+                  id="logoGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stopColor="#3B82F6" />
+                  <stop offset="50%" stopColor="#1D4ED8" />
+                  <stop offset="100%" stopColor="#1E40AF" />
+                </linearGradient>
+              </defs>
               <path
-                fillRule="evenodd"
-                d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-                clipRule="evenodd"
+                d="M20 2L25 15L38 15L28 24L33 37L20 28L7 37L12 24L2 15L15 15L20 2Z"
+                fill="url(#logoGradient)"
+                stroke="url(#logoGradient)"
+                strokeWidth="1"
+              />
+              <path
+                d="M20 8L22 15L29 15L24 20L26 27L20 23L14 27L16 20L11 15L18 15L20 8Z"
+                fill="white"
+                opacity="0.3"
               />
             </svg>
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-900">SOLVASE</h1>
-            <p className="text-xs text-gray-500">AI-POWERED INSIGHTS</p>
+            <h1 className="text-xl font-bold text-blue-900">SOLVASE</h1>
+            <p className="text-xs text-gray-500">
+              PULL M SEE AUTOMATION FOR AI
+            </p>
           </div>
         </div>
       </div>
 
       {/* Main Navigation */}
-      <nav className="flex-1 px-4 py-2 space-y-1">
+      <nav className="px-6 py-4 space-y-3">
         {navigation.map((item) => {
           const isActive = pathname === item.href;
           return (
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center px-3 py-3 text-sm font-medium rounded-lg transition-colors ${
+              className={`flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
                 isActive
-                  ? "bg-blue-50 text-blue-700 border-l-4 border-blue-700"
-                  : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  ? "bg-blue-50 text-blue-700 border border-blue-200"
+                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
               }`}
             >
               {item.icon}
@@ -165,18 +177,21 @@ export default function Sidebar() {
         })}
       </nav>
 
+      {/* Spacer to push bottom navigation down */}
+      <div className="flex-1"></div>
+
       {/* Bottom Navigation */}
-      <div className="px-4 py-4 space-y-1">
+      <div className="px-6 py-6 space-y-3">
         {bottomNavigation.map((item) => {
           const isActive = pathname === item.href;
           return (
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center px-3 py-3 text-sm font-medium rounded-lg transition-colors ${
+              className={`flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
                 isActive
-                  ? "bg-blue-50 text-blue-700 border-l-4 border-blue-700"
-                  : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  ? "bg-blue-50 text-blue-700 border border-blue-200"
+                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
               }`}
             >
               {item.icon}
@@ -184,36 +199,6 @@ export default function Sidebar() {
             </Link>
           );
         })}
-      </div>
-
-      {/* User Profile Section */}
-      <div className="px-4 py-4 border-t border-gray-200">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
-            <span className="text-white font-medium text-sm">H</span>
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-gray-900 truncate">
-              Zuhran Ahmad
-            </p>
-            <p className="text-xs text-gray-500 truncate">
-              zuhran.ahmad@gmail.com
-            </p>
-          </div>
-          <svg
-            className="w-4 h-4 text-gray-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </div>
       </div>
     </div>
   );
